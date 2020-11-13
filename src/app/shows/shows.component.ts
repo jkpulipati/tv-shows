@@ -12,6 +12,7 @@ import { SharedService } from '../shared/services/shared.service';
 export class ShowsComponent implements OnInit {
 
   popularShows$: Observable<any>;
+  groupByGenreShows: Array<any> = [];
 
   constructor(private service: SharedService) { }
 
@@ -31,9 +32,22 @@ export class ShowsComponent implements OnInit {
     this.popularShows$ = this.service.getShowList().pipe(
       map( (shows: any) => {
         console.log(shows);
+        this.groupByGenreShows = this.formatShows(shows);
         return shows.filter(show => show.rating.average > 8.8);
       })
     );
+  }
+
+  formatShows(shows: any): Array<any> {
+    return shows.reduce((acc, res) => {
+        acc = [...acc, ...res.genres];
+        return [...new Set(acc)].sort();
+    }, []).reduce( (res, genre) => {
+        const list = shows.filter(show => show.genres.indexOf(genre) !== -1);
+        const newGenre = {name: `${genre} Shows`, list};
+        res = [...res, newGenre];
+        return res;
+    }, []);
   }
 
 }

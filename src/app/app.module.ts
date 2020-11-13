@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,13 +22,17 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    IvyCarouselModule
   ],
   providers: [
     {
       provide: API_CONFIG_TOKEN,
       useValue: API_CONFIG
     }
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
   ],
   bootstrap: [AppComponent]
 })

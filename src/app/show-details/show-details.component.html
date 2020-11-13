@@ -35,7 +35,7 @@
 <div class="col-md-10 col-xs-12 mx-auto row">
   <div *ngFor="let person of showCrew$ | async" class="col-md-3 col-xs-12 mb-3">
     <div class="card" *ngIf="person?.person?.image">
-      <img class="card-img-top"[src]="person?.person?.image?.medium"alt="Card
+      <img class="card-img-top" [src]="person?.person?.image?.medium" alt="Card
         image cap">
       <div class="card-body">
         <p class="card-text">{{person.type}} - {{person.person.name}}</p>
@@ -45,16 +45,19 @@
 </div>
 <div>
   <ul class="nav nav-tabs">
-    <li class="nav-item"*ngFor="let season of showSeasons$ | async; let i=i ndex">
-      <a class="nav-link active"(click)="getSeasonsEpisodes(season.id)"href="javascript:void(0)">Season
+    <li class="nav-item" *ngFor="let season of showSeasons$ | async; let
+      i=index">
+      <a class="nav-link active" (click)="getSeasonsEpisodes(season.id)"
+        href="javascript:void(0)">Season
         {{i+1}}</a>
     </li>
   </ul>
-  <div *ngFor="let episode of seasonEpisodes$ | async"id="carouselExampleSlidesOnly"class="carousel
-    slide"data-ride="carousel">
+  <div *ngFor="let episode of seasonEpisodes$ | async"
+    id="carouselExampleSlidesOnly" class="carousel
+    slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img [src]="episode?.image?.original"class="d-block w-100"alt="...">
+        <img [src]="episode?.image?.original" class="d-block w-100" alt="...">
       </div>
     </div>
   </div>
