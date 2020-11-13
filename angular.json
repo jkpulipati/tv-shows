@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tv-shows"
+    }
+  },
+  "defaultProject": "tv-shows",
+  "cli": {
+    "analytics": "7dd15121-7760-42f4-8381-ab7e42dd6617"
+  }
 }

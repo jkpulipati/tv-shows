@@ -1,0 +1,61 @@
+<p>show-details works!</p>
+<div *ngIf="showDetails$ | async as showInfo">
+  <div class="card" style="width: 18rem;">
+    <img class="card-img-top" [src]="showInfo?.image?.original" alt="Card image
+      cap">
+  </div>
+  <b>{{showInfo?.name}}</b>
+  <p [innerHTML]="showInfo.summary"></p>
+</div>
+
+<router-outlet></router-outlet>
+
+
+<b>Cast List</b>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row ml-5">
+  <div *ngFor="let person of showCast$ | async">
+    <div style="width: 18rem;">
+      <img class="card-img-top" [src]="person?.person?.image?.medium"
+        alt="Card
+        image cap">
+      <div class="card-body">
+        <p class="card-text">{{person.person.name}} as
+          {{person.character.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<b>Crew List</b>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row ml-5">
+  <div *ngFor="let person of showCrew$ | async">
+    <div style="width: 18rem;" *ngIf="person?.person?.image">
+      <img class="card-img-top" [src]="person?.person?.image?.medium"
+        alt="Card
+        image cap">
+      <div class="card-body">
+        <p class="card-text">{{person.type}} - {{person.person.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let season of showSeasons$ | async; let i=
+      index">
+      <a class="nav-link active" (click)="getSeasonsEpisodes(season.id)"
+        href="javascript:void(0)">Season {{i+1}}</a>
+    </li>
+  </ul>
+  <div *ngFor="let episode of seasonEpisodes$ | async"
+    id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img [src]="episode?.image?.original" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+  <!-- <div *ngFor="let episode of seasonEpisodes$ | async">
+    <p>{{episode?.name}}</p>
+    <p [innerHTML]="episode?.summary"></p>
+  </div> -->
+</div>
