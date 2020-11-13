@@ -1,36 +1,41 @@
-<p>show-details works!</p>
-<div *ngIf="showDetails$ | async as showInfo">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" [src]="showInfo?.image?.original" alt="Card image
-      cap">
-  </div>
-  <b>{{showInfo?.name}}</b>
-  <p [innerHTML]="showInfo.summary"></p>
-</div>
+<h3 class="col-md-10 col-xs-12 mx-auto mb-3">show-details works!</h3>
+<div class="row form-group">
+  <div *ngIf="showDetails$ | async as showInfo" class="col-md-10 col-xs-12
+    mx-auto row align-items-center">
 
+    <div class="col-md-9 col-xs-12">
+      <h4>{{showInfo?.name}}</h4>
+      <p [innerHTML]="showInfo.summary"></p>
+    </div>
+    <div class="col-md-3 col-xs-12 text-center">
+      <img class="card-img-top title-img" [src]="showInfo?.image?.original"
+        alt="Card image
+        cap">
+    </div>
+  </div>
+</div>
 <router-outlet></router-outlet>
 
 
-<b>Cast List</b>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row ml-5">
-  <div *ngFor="let person of showCast$ | async">
-    <div style="width: 18rem;">
-      <img class="card-img-top" [src]="person?.person?.image?.medium"
-        alt="Card
+<h3 class="col-md-10 col-xs-12 mx-auto mb-3">Cast List</h3>
+<div class="col-md-10 col-xs-12 mx-auto row">
+  <div *ngFor="let person of showCast$ | async" class="col-md-3 col-xs-12 mb-3">
+    <div class="card">
+      <img class="card-img-top" [src]="person?.person?.image?.medium" alt="Card
         image cap">
       <div class="card-body">
-        <p class="card-text">{{person.person.name}} as
-          {{person.character.name}}</p>
+        <p class="card-text text-truncate">{{person.person.name}} as
+          {{person.character.name}}
+        </p>
       </div>
     </div>
   </div>
 </div>
-<b>Crew List</b>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row ml-5">
-  <div *ngFor="let person of showCrew$ | async">
-    <div style="width: 18rem;" *ngIf="person?.person?.image">
-      <img class="card-img-top" [src]="person?.person?.image?.medium"
-        alt="Card
+<h3 class="col-md-10 col-xs-12 mx-auto mb-3">Crew List</h3>
+<div class="col-md-10 col-xs-12 mx-auto row">
+  <div *ngFor="let person of showCrew$ | async" class="col-md-3 col-xs-12 mb-3">
+    <div class="card" *ngIf="person?.person?.image">
+      <img class="card-img-top"[src]="person?.person?.image?.medium"alt="Card
         image cap">
       <div class="card-body">
         <p class="card-text">{{person.type}} - {{person.person.name}}</p>
@@ -40,22 +45,21 @@
 </div>
 <div>
   <ul class="nav nav-tabs">
-    <li class="nav-item" *ngFor="let season of showSeasons$ | async; let i=
-      index">
-      <a class="nav-link active" (click)="getSeasonsEpisodes(season.id)"
-        href="javascript:void(0)">Season {{i+1}}</a>
+    <li class="nav-item"*ngFor="let season of showSeasons$ | async; let i=i ndex">
+      <a class="nav-link active"(click)="getSeasonsEpisodes(season.id)"href="javascript:void(0)">Season
+        {{i+1}}</a>
     </li>
   </ul>
-  <div *ngFor="let episode of seasonEpisodes$ | async"
-    id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div *ngFor="let episode of seasonEpisodes$ | async"id="carouselExampleSlidesOnly"class="carousel
+    slide"data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img [src]="episode?.image?.original" class="d-block w-100" alt="...">
+        <img [src]="episode?.image?.original"class="d-block w-100"alt="...">
       </div>
     </div>
   </div>
-  <!-- <div *ngFor="let episode of seasonEpisodes$ | async">
+  <!-- <div *ngFor="let episode of seasonEpisodes$ | async ">
     <p>{{episode?.name}}</p>
-    <p [innerHTML]="episode?.summary"></p>
+    <p [innerHTML]="episode?.summary "></p>
   </div> -->
 </div>

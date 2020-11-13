@@ -7,21 +7,17 @@
   <div class="col-md-6 col-lg-3 col-sm-12 col-xs-12" *ngFor="let show of
     popularShows$ | async">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" [src]="show?.image?.medium" alt="Card image
+      <img class="card-img-top" [src]="show.image.medium" alt="Card image
         cap">
+      <div class="card-img-overlay">
+        <p class="card-text"> <a href="javscript:void(0)"
+            [routerLink]="['/show', show.id]">{{show.name}}</a></p>
+      </div>
     </div>
-    <a href="javscript:void(0)" [routerLink]="['/show', show.id]">{{show.name}}</a>
+
     <!-- <img class="img-card"
-                [src]="show.image.original" alt="Image not found"> -->
+              [src]="show.image.original" alt="Image not found"> -->
   </div>
 </div>
 
-<!-- Drama
-Comedy
-Romance
-Children
-Music
-Action
-Science-Fiction
-war
-History -->
+<!-- Drama Comedy Romance Children Music Action Science-Fiction war History -->
