@@ -17,6 +17,14 @@ export class ShowsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPopularShows();
+
+    this.service.getSearchTerm().subscribe(value => {
+      console.log(value);
+
+      this.popularShows$ = this.service.getSearchByKeyword(value);
+
+      // this.popularShows$ = this.service.getSearchByPerson(value);
+    });
   }
 
   getPopularShows(): void {
