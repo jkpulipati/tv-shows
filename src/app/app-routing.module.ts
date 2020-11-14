@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchShowsComponent } from './search-shows/search-shows.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowsComponent } from './shows/shows.component';
@@ -7,11 +8,11 @@ import { ShowsComponent } from './shows/shows.component';
 const routes: Routes = [
   {
     path: '',
-    component: ShowsComponent,
+    component: ShowsComponent
   },
   {
     path: 'search',
-    component: SearchShowsComponent,
+    component: SearchShowsComponent
   },
   {
     path: 'show/:id',
@@ -22,7 +23,11 @@ const routes: Routes = [
       { path: 'images', component: ShowsComponent },
       { path: 'seasons', component: ShowsComponent }
     ]
-  }
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({
