@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { API_CONFIG_TOKEN } from '../config/api.config';
 import { environment } from '../../../environments/environment';
@@ -12,7 +12,7 @@ import { filter, map } from 'rxjs/operators';
 export class SharedService {
 
   baseUrl = environment.base_url;
-  private searchTerm$ = new Subject<string>();
+  private searchTerm$ = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient, @Inject(API_CONFIG_TOKEN) private apiConfig) { }
 
@@ -33,6 +33,7 @@ export class SharedService {
     );
   }
 
+
   getSearchByPerson(value: string): Observable<any> {
     const url = `${this.baseUrl}/search/people?q=${value}`;
     return this.http.get(url).pipe(
@@ -49,6 +50,11 @@ export class SharedService {
 
   getShowDetails(showId: number): Observable<any> {
     const url = `${this.baseUrl}${this.apiConfig.SHOWS}/${showId}`;
+    return this.http.get(url);
+  }
+
+  getShowCrewCastSeasonDetails(showId: number): Observable<any> {
+    const url = `${this.baseUrl}${this.apiConfig.SHOWS}/${showId}${this.apiConfig.CREW_CAST_SEASON_DETAILS}`;
     return this.http.get(url);
   }
 

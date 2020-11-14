@@ -1,0 +1,13 @@
+img {
+    width: 100%;
+    height: 325px;
+    -webkit-filter: brightness(75%);
+    margin-bottom: 15px;
+}
+
+.card-text a {
+    margin-bottom: 25px;
+    bottom: 0;
+    position: absolute;
+    color: #fff;
+}

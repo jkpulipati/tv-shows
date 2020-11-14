@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SearchShowsComponent } from './search-shows/search-shows.component';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { ShowsComponent } from './shows/shows.component';
 
@@ -7,6 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: ShowsComponent,
+  },
+  {
+    path: 'search',
+    component: SearchShowsComponent,
   },
   {
     path: 'show/:id',

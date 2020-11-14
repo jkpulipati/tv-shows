@@ -22,11 +22,15 @@ export class ShowDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const showId = +(this.router.snapshot.paramMap.get('id'));
-    this.showEpisodeDetails$ = this.service.getEpisodesByShowId(showId);
-    this.showDetails$ = this.service.getShowDetails(showId);
-    this.showCast$ = this.service.getShowCast(showId);
-    this.showCrew$ = this.service.getShowCrew(showId);
-    this.getShowSeasons(showId);
+    // this.showEpisodeDetails$ = this.service.getEpisodesByShowId(showId);
+    this.getShowCrewCastSeasonDetails(showId);
+    // this.showCast$ = this.service.getShowCast(showId);
+    // this.showCrew$ = this.service.getShowCrew(showId);
+    // this.getShowSeasons(showId);
+  }
+
+  getShowCrewCastSeasonDetails(showId: number): void {
+    this.showDetails$ = this.service.getShowCrewCastSeasonDetails(showId);
   }
 
   getShowSeasons(showId: number): void {

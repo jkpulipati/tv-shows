@@ -18,14 +18,6 @@ export class ShowsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPopularShows();
-
-    this.service.getSearchTerm().subscribe(value => {
-      console.log(value);
-
-      this.popularShows$ = this.service.getSearchByKeyword(value);
-
-      // this.popularShows$ = this.service.getSearchByPerson(value);
-    });
   }
 
   getPopularShows(): void {
@@ -43,7 +35,8 @@ export class ShowsComponent implements OnInit {
         acc = [...acc, ...res.genres];
         return [...new Set(acc)].sort();
     }, []).reduce( (res, genre) => {
-        const list = shows.filter(show => show.genres.indexOf(genre) !== -1).sort((show1, show2) => show2.rating.average - show1.rating.average);;
+        const list = shows.filter(show => show.genres.indexOf(genre) !== -1)
+                          .sort((show1, show2) => show2.rating.average - show1.rating.average);
         const newGenre = {name: `${genre} Shows`, list};
         res = [...res, newGenre];
         return res;

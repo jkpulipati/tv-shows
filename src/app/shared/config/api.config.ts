@@ -6,7 +6,8 @@ export const API_CONFIG = {
     SHOW_SEASONS: '/shows/:id/seasons',
     SHOW_CAST: '/shows/:id/cast',
     SHOW_CREW: '/shows/:id/crew',
-    SHOW_IMAGES: '/shows/:id/images'
+    SHOW_IMAGES: '/shows/:id/images',
+    CREW_CAST_SEASON_DETAILS: '?embed[]=seasons&embed[]=cast&embed[]=crew'
 };
 
 

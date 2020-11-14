@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { SharedService } from '../shared/services/shared.service';
 
@@ -9,12 +10,13 @@ import { SharedService } from '../shared/services/shared.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
   search(value: string): void {
+    this.route.navigate(['/search']);
     this.sharedService.setSearchTerm(value);
   }
 
