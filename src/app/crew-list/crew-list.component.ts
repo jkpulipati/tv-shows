@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ShowModel } from '../shared/config/models';
 
 @Component({
   selector: 'app-crew-list',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CrewListComponent implements OnInit {
 
-  @Input() crewList;
+  @Input() crewList: Array<ShowModel>;
 
   constructor() { }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
+import { ShowModel } from '../shared/config/models';
 import { SharedService } from '../shared/services/shared.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { SharedService } from '../shared/services/shared.service';
 })
 export class ShowDetailsComponent implements OnInit {
 
-  showDetails$: Observable<any>;
+  showDetails$: Observable<Array<ShowModel>>;
   showEpisodeDetails$: Observable<any>;
   showCast$: Observable<any>;
   showCrew$: Observable<any>;

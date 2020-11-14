@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ShowModel } from '../shared/config/models';
 
 @Component({
   selector: 'app-cast-list',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CastListComponent implements OnInit {
 
-  @Input() castList;
+  @Input() castList: Array<ShowModel>;
 
   constructor() { }
 

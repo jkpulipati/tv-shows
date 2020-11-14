@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-
+import { map } from 'rxjs/operators';
+import { ShowModel } from '../shared/config/models';
 import { SharedService } from '../shared/services/shared.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { SharedService } from '../shared/services/shared.service';
 })
 export class ShowsComponent implements OnInit {
 
-  popularShows$: Observable<any>;
-  groupByGenreShows: Array<any> = [];
+  popularShows$: Observable<Array<ShowModel>>;
+  groupByGenreShows: Array<ShowModel> = [];
 
   constructor(private service: SharedService) { }
 
@@ -22,27 +22,23 @@ export class ShowsComponent implements OnInit {
 
   getPopularShows(): void {
     this.popularShows$ = this.service.getShowList().pipe(
-      map( (shows: any) => {
-        console.log(shows);
+      map( (shows: Array<ShowModel>) => {
         this.groupByGenreShows = this.formatShows(shows);
         return shows.filter(show => show.rating.average > 8.8);
       })
     );
   }
 
-  formatShows(shows: any): Array<any> {
-    return shows.reduce((acc, res) => {
+  formatShows(shows: Array<ShowModel>): Array<ShowModel> {
+    return shows.reduce((acc: Array<any>, res: ShowModel) => {
         acc = [...acc, ...res.genres];
         return [...new Set(acc)].sort();
-    }, []).reduce( (res, genre) => {
-        let list = shows.filter(show => show.genres.indexOf(genre) !== -1)
-                          .sort((show1, show2) => show2.rating.average - show1.rating.average);
-        // list = list.map(show => ({...show, path: show.image.original, width: '100'}));
+    }, []).reduce( (res: Array<any>, genre: string) => {
+        const list: Array<ShowModel> = shows.filter( (show: ShowModel) => show.genres.indexOf(genre) !== -1)
+                          .sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
         const newGenre = {name: `${genre} Shows`, list};
         res = [...res, newGenre];
-        console.log(genre, list);
         return res;
     }, []);
   }
-
 }

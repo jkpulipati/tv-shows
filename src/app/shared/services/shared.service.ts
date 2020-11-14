@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { API_CONFIG_TOKEN } from '../config/api.config';
 import { environment } from '../../../environments/environment';
 import { filter, map } from 'rxjs/operators';
+import { ShowModel } from '../config/models';
 
 @Injectable({
   providedIn: 'root'
