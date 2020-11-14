@@ -1,0 +1,4 @@
+.carousel .carousel-cell img{
+    cursor: pointer;
+    object-fit: fill !important;
+}

@@ -5,7 +5,11 @@
 <div *ngIf="popularShows$ | async">
     <div *ngFor="let genreShow of groupByGenreShows">
         <h4>{{genreShow.name}}</h4>
-        <carousel>
+        <!-- <carousel
+            [images]="genreShow.list">
+        </carousel> -->
+        <carousel [cellWidth]="100"
+            [arrowsTheme]="dark">
             <div class="carousel-cell" *ngFor="let show of genreShow.list">
                 <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
                     [src]="show?.image?.original">
@@ -13,6 +17,14 @@
                     src="assets/images/img-not-found.jpg">
             </div>
         </carousel>
+        <!-- <carousel [cellWidth]="100" [arrowsOutside]="true" [arrowsTheme]="dark">
+            <div class="carousel-cell" *ngFor="let show of genreShow.list">
+                <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
+                    [src]="show?.image?.original">
+                <img *ngIf="!show?.image" [routerLink]="['/show', show.id]"
+                    src="assets/images/img-not-found.jpg">
+            </div>
+        </carousel> -->
     </div>
 
 </div>

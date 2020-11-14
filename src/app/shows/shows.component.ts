@@ -35,10 +35,12 @@ export class ShowsComponent implements OnInit {
         acc = [...acc, ...res.genres];
         return [...new Set(acc)].sort();
     }, []).reduce( (res, genre) => {
-        const list = shows.filter(show => show.genres.indexOf(genre) !== -1)
+        let list = shows.filter(show => show.genres.indexOf(genre) !== -1)
                           .sort((show1, show2) => show2.rating.average - show1.rating.average);
+        // list = list.map(show => ({...show, path: show.image.original, width: '100'}));
         const newGenre = {name: `${genre} Shows`, list};
         res = [...res, newGenre];
+        console.log(genre, list);
         return res;
     }, []);
   }
