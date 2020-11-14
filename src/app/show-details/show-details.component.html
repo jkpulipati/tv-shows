@@ -1,34 +1,32 @@
 <!-- <h3 class="col-md-10 col-xs-12 mx-auto mb-3">show-details works!</h3> -->
-<div class="row form-group" *ngIf="showDetails$ | async as showInfo">
-    <div class="col-md-10 col-xs-12 mx-auto row align-items-center">
+<div class="row form-group mt-3" *ngIf="showDetails$ | async as showInfo">
+    <div class="col-md-12 col-xs-12 mx-auto row align-items-center">
         <div class="col-md-9 col-xs-12">
             <h4>{{showInfo?.name}}</h4>
             <p [innerHTML]="showInfo.summary"></p>
         </div>
         <div class="col-md-3 col-xs-12 text-center">
             <img class="card-img-top title-img"
-                [src]="showInfo?.image?.original"
-                alt="Card image
+                [src]="showInfo?.image?.original" alt="Card image
                 cap">
         </div>
     </div>
     <app-crew-list [crewList]="showInfo?._embedded?.crew"></app-crew-list>
     <app-cast-list [castList]="showInfo?._embedded?.cast"></app-cast-list>
 
-    <div>
+    <div class="col-md-12 col-xs-12 mx-auto row">
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let season of
                 showInfo?._embedded?.seasons; let
                 i=index">
                 <div class="col-md-3 col-xs-12 text-center">
                     <img *ngIf="season?.image" class="card-img-top title-img"
-                        [src]="season?.image?.original"
-                        alt="Card image
+                        [src]="season?.image?.original" alt="Card image
                         cap">
                     <ng-container *ngIf="!season?.image">
                         <img class="card-img-top title-img"
-                            src="assets/images/img-not-found.jpg"
-                            alt="Card image
+                            src="assets/images/img-not-found.jpg" alt="Card
+                            image
                             cap">
                         <span>Season {{i+1}}</span>
                     </ng-container>

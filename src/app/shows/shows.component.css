@@ -1,4 +1,11 @@
-.carousel .carousel-cell img{
+.carousel .carousel-cell img {
     cursor: pointer;
     object-fit: fill !important;
+}
+
+@media only screen and (min-width:768px) {
+    .nm-mx-5 {
+        margin-left: 3rem!important;
+        margin-right: 3rem!important;
+    }
 }

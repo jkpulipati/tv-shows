@@ -2,14 +2,13 @@
 <div *ngFor="let show of popularShows$ | async as shows">
     {{show.name}}
 </div> -->
-<div *ngIf="popularShows$ | async">
-    <div *ngFor="let genreShow of groupByGenreShows">
+<div *ngIf="popularShows$ | async" class="nm-mx-5">
+    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-3">
         <h4>{{genreShow.name}}</h4>
         <!-- <carousel
             [images]="genreShow.list">
         </carousel> -->
-        <carousel [cellWidth]="100"
-            [arrowsTheme]="dark">
+        <carousel [arrowsTheme]="dark">
             <div class="carousel-cell" *ngFor="let show of genreShow.list">
                 <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
                     [src]="show?.image?.original">
