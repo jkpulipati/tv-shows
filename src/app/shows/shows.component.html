@@ -3,7 +3,7 @@
     {{show.name}}
 </div> -->
 <div *ngIf="popularShows$ | async" class="nm-mx-5">
-    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-3">
+    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-4">
         <h4>{{genreShow.name}}</h4>
         <!-- <carousel
             [images]="genreShow.list">

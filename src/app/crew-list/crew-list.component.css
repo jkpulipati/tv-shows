@@ -7,7 +7,15 @@ img {
     border-radius: 50%;
 }
 
-.col-md-12.mx-auto {
-    margin: 50px 0px 110px;
-    padding: 0 65px;
+@media only screen and (min-width:768px) {
+    .col-md-12.content-padding {
+        margin: 50px 0px 110px;
+        padding: 0 65px;
+    }
+}
+
+@media only screen and (max-width:768px) {
+    .card-body {
+        padding: 10px 0;
+    }
 }

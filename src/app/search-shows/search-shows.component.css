@@ -1,4 +1,4 @@
-img {
+/* img {
     width: 100%;
     height: 325px;
     -webkit-filter: brightness(75%);
@@ -10,4 +10,24 @@ img {
     bottom: 0;
     position: absolute;
     color: #fff;
+} */
+.img-card {
+    width: 100%;
+    height: 325px;
+    -webkit-filter: brightness(75%);
+    cursor: pointer;
 }
+
+.form-control {
+    width: 21% !important;
+}
+.ml-15 {
+    margin-left: 1px;
+}
+@media only screen and (min-width:768px) {
+    .nm-mx-5 {
+        margin-left: 1rem!important;
+        margin-right: 2rem!important;
+    }
+}
+
