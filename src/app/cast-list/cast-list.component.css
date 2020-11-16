@@ -2,14 +2,21 @@
     border: none;
 }
 
+.card-text {
+    color: #002d72;
+    font-weight: 500;
+}
+
 img {
     height: 250px;
     border-radius: 50%;
 }
 
+
+
 @media only screen and (min-width:768px) {
     .col-md-12.content-padding {
-        margin: 50px 0px 110px;
+        margin: 32px 0px 0px;
         padding: 0 65px;
     }
 }
@@ -17,5 +24,8 @@ img {
 @media only screen and (max-width:768px) {
     .card-body {
         padding: 10px 0;
+    }
+    img {
+        height: 125px !important;
     }
 }

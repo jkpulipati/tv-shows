@@ -23,14 +23,15 @@ export class ShowsComponent implements OnInit {
   getPopularShows(): void {
     this.popularShows$ = this.service.getShowList().pipe(
       map( (shows: Array<ShowModel>) => {
-        this.groupByGenreShows = this.formatShows(shows);
-        return shows.filter(show => show.rating.average > 8.8);
+        const popularShows = shows.filter(show => show.rating.average > 8.5);
+        this.groupByGenreShows = this.formatShows(shows, popularShows);
+        return popularShows;
       })
     );
   }
 
-  formatShows(shows: Array<ShowModel>): Array<ShowModel> {
-    return shows.reduce((acc: Array<any>, res: ShowModel) => {
+  formatShows(shows: Array<ShowModel>, popularShows: Array<ShowModel>): Array<ShowModel> {
+    const result = shows.reduce((acc: Array<any>, res: ShowModel) => {
         acc = [...acc, ...res.genres];
         return [...new Set(acc)].sort();
     }, []).reduce( (res: Array<any>, genre: string) => {
@@ -40,5 +41,11 @@ export class ShowsComponent implements OnInit {
         res = [...res, newGenre];
         return res;
     }, []);
+
+    popularShows = popularShows.sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
+
+    return [
+      {name: `Popular Shows`, list: popularShows }, ...result
+    ];
   }
 }

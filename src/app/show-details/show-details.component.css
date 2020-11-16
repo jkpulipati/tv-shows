@@ -11,6 +11,16 @@ h4 {
 }
 
 .col-md-12.mx-auto {
-    margin: 50px 0px 110px;
+    margin: 32px 0px 0px;
     padding: 0 50px;
+}
+
+@media only screen and (min-width:768px) {
+    .col-md-12.content-padding {
+        padding: 0 65px;
+    }
+}
+
+.nav-tabs .nav-item {
+    margin-bottom: 12px;
 }

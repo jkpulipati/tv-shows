@@ -2,21 +2,32 @@
 <div *ngFor="let show of popularShows$ | async as shows">
     {{show.name}}
 </div> -->
-<div *ngIf="popularShows$ | async" class="nm-mx-5">
-    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-4">
-        <h4>{{genreShow.name}}</h4>
-        <!-- <carousel
-            [images]="genreShow.list">
-        </carousel> -->
+<div *ngIf="popularShows$ | async as popularShows" class="nm-mx-5">
+  <!-- <div class="row mx-0 my-4">
+        <h4>{{Popular Shows}}</h4>
         <carousel [arrowsTheme]="dark">
-            <div class="carousel-cell" *ngFor="let show of genreShow.list">
+            <div class="carousel-cell" *ngFor="let show of popularShows">
                 <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
                     [src]="show?.image?.original">
                 <img *ngIf="!show?.image" [routerLink]="['/show', show.id]"
                     src="assets/images/img-not-found.jpg">
             </div>
         </carousel>
-        <!-- <carousel [cellWidth]="100" [arrowsOutside]="true" [arrowsTheme]="dark">
+    </div> -->
+  <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-4">
+    <h4>{{genreShow.name}}</h4>
+    <!-- <carousel
+            [images]="genreShow.list">
+        </carousel> -->
+    <carousel [arrowsTheme]="dark">
+      <div class="carousel-cell" *ngFor="let show of genreShow.list">
+        <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
+          [src]="show?.image?.original">
+        <img *ngIf="!show?.image" [routerLink]="['/show', show.id]"
+          src="assets/images/img-not-found.jpg">
+      </div>
+    </carousel>
+    <!-- <carousel [cellWidth]="100" [arrowsOutside]="true" [arrowsTheme]="dark">
             <div class="carousel-cell" *ngFor="let show of genreShow.list">
                 <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
                     [src]="show?.image?.original">
@@ -24,6 +35,6 @@
                     src="assets/images/img-not-found.jpg">
             </div>
         </carousel> -->
-    </div>
+  </div>
 
 </div>

@@ -4,6 +4,9 @@
         <div class="col-md-9 col-xs-12">
             <h4>{{showInfo?.name}}</h4>
             <p [innerHTML]="showInfo.summary"></p>
+            <p *ngIf="showInfo?.rating?.average">Rating:
+                {{showInfo?.rating?.average}}</p>
+            <p *ngIf="showInfo?.runtime">Duration: {{showInfo?.runtime}} mins</p>
         </div>
         <div class="col-md-3 col-xs-12 text-center">
             <img class="card-img-top title-img"
@@ -11,9 +14,11 @@
                 cap">
         </div>
     </div>
-    <app-crew-list [crewList]="showInfo?._embedded?.crew"></app-crew-list>
-    <app-cast-list [castList]="showInfo?._embedded?.cast"></app-cast-list>
-
+    <app-crew-list *ngIf="showInfo?._embedded?.crew.length"
+        [crewList]="showInfo?._embedded?.crew"></app-crew-list>
+    <app-cast-list *ngIf="showInfo?._embedded?.cast.length"
+        [castList]="showInfo?._embedded?.cast"></app-cast-list>
+    <h3 class="col-md-12 col-xs-12 content-padding mb-3">Seasons</h3>
     <div class="col-md-12 col-xs-12 mx-auto row">
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let season of
@@ -28,7 +33,7 @@
                             src="assets/images/img-not-found.jpg" alt="Card
                             image
                             cap">
-                        <span>Season {{i+1}}</span>
+                        <!-- <span class="card-img-top title-img">Season {{i+1}}</span> -->
                     </ng-container>
                 </div>
                 <!--         
