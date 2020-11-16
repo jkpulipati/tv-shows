@@ -21,4 +21,5 @@ export interface ShowModel {
     'rating': RatingModel;
     'weight': number;
     'image': ImageModel;
+    'list'?: Array<ShowModel>;
 }

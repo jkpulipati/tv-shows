@@ -31,21 +31,30 @@ export class ShowsComponent implements OnInit {
   }
 
   formatShows(shows: Array<ShowModel>, popularShows: Array<ShowModel>): Array<ShowModel> {
-    const result = shows.reduce((acc: Array<any>, res: ShowModel) => {
+    const uniqueGenres: Array<string> = this.getUniqueGenres(shows);
+    const result: Array<ShowModel> = this.groupByUniqueGenres(uniqueGenres, shows);
+
+    const list = popularShows.sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
+
+    return [
+      {name: `Popular Shows`, list, ...list[0] }, ...result
+    ];
+  }
+
+  getUniqueGenres(shows: Array<ShowModel>): Array<string> {
+    return shows.reduce((acc: Array<any>, res: ShowModel) => {
         acc = [...acc, ...res.genres];
         return [...new Set(acc)].sort();
-    }, []).reduce( (res: Array<any>, genre: string) => {
+    }, []);
+  }
+
+  groupByUniqueGenres(genres: Array<string>, shows: Array<ShowModel>): Array<ShowModel> {
+    return genres.reduce( (res: Array<any>, genre: string) => {
         const list: Array<ShowModel> = shows.filter( (show: ShowModel) => show.genres.indexOf(genre) !== -1)
                           .sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
         const newGenre = {name: `${genre}`, list};
         res = [...res, newGenre];
         return res;
     }, []);
-
-    popularShows = popularShows.sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
-
-    return [
-      {name: `Popular Shows`, list: popularShows }, ...result
-    ];
   }
 }
