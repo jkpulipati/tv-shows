@@ -13,10 +13,6 @@
                 cap">
         </div>
     </div>
-    <app-crew-list *ngIf="showInfo?._embedded?.crew.length"
-        [crewList]="showInfo?._embedded?.crew"></app-crew-list>
-    <app-cast-list *ngIf="showInfo?._embedded?.cast.length"
-        [castList]="showInfo?._embedded?.cast"></app-cast-list>
     <h3 class="col-md-12 col-xs-12 content-padding mb-3">Seasons</h3>
     <div class="col-md-12 col-xs-12 mx-auto row">
         <ul class="nav nav-tabs">
@@ -38,4 +34,8 @@
             </li>
         </ul>
     </div>
+    <app-crew-list *ngIf="showInfo?._embedded?.crew.length"
+        [crewList]="showInfo?._embedded?.crew"></app-crew-list>
+    <app-cast-list *ngIf="showInfo?._embedded?.cast.length"
+        [castList]="showInfo?._embedded?.cast"></app-cast-list>
 </div>

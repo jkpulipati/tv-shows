@@ -37,7 +37,7 @@ export class ShowsComponent implements OnInit {
     }, []).reduce( (res: Array<any>, genre: string) => {
         const list: Array<ShowModel> = shows.filter( (show: ShowModel) => show.genres.indexOf(genre) !== -1)
                           .sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
-        const newGenre = {name: `${genre} Shows`, list};
+        const newGenre = {name: `${genre}`, list};
         res = [...res, newGenre];
         return res;
     }, []);

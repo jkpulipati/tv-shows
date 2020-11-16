@@ -1,43 +1,20 @@
-<!-- <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 row ml-15"> -->
-<!-- <span *ngIf="searchShows$ | async as shows; else loadingOrError">
-  <span class="col-md-6 col-lg-3 col-sm-12 col-xs-12" *ngFor="let show of
-    shows">
-    <span class="card" style="width: 18rem;">
-      <img class="card-img-top" *ngIf="show?.image"
-        [src]="show?.image?.original" alt="Card image
-        cap">
-      <img class="card-img-top" *ngIf="!show?.image"
-        src="assets/images/img-not-found.jpg" alt="Card image
-        cap">
-      <div class="card-img-overlay">
-        <p class="card-text"> <a href="javscript:void(0)"
-            [routerLink]="['/show', show.id]">{{show.name}}</a></p>
-      </div>
-    </span>
-  </span>
-  <div *ngIf="!shows.length">No Shows Found</div>
-</span> -->
-
-
-<!-- </span> -->
 <div class="nm-mx-5">
   <div *ngIf="searchShows$ | async as shows; else loadingOrError"
     class="col-lg-12
     col-md-12 col-sm-12 col-xs-12 row mx-0 my-4">
-    <div class="col-md-6 col-lg-4 col-sm-12 col-xs-12" *ngFor="let show of
+    <div class="col-md-6 col-lg-3 col-sm-12 col-xs-12" *ngFor="let show of
       shows">
       <div class="card mb-4 shadow-sm">
         <img *ngIf="show?.image" class="img-card"
-          (click)="downloadImage(image)"
+          [routerLink]="['/show', show.id]"
           [src]="show?.image?.original" alt="Image not available">
         <img class="img-card" *ngIf="!show?.image"
-          (click)="downloadImage(image)"
+          [routerLink]="['/show', show.id]"
           src="assets/images/img-not-found.jpg" alt="Image not
           available">
-        <div class="card-body">
-          <p class="card-text"> <a href="javscript:void(0)"
-              [routerLink]="['/show', show.id]">{{show.name}}</a></p>
-        </div>
+        <p class="show-rating">{{(show?.rating?.average) ?
+          show?.rating?.average :
+          'NA'}}</p>
       </div>
     </div>
 

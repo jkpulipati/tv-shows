@@ -9,3 +9,10 @@
         margin-right: 3rem!important;
     }
 }
+
+.show-rating {
+    position: absolute;
+    bottom: -13px;
+    right: 10px;
+    color: darkorange;
+}

@@ -1,9 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top header-color">
     <a class="navbar-brand" [routerLink]="['/']" href="#">TV Shows</a>
-    <div class="navbar-collapse collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-        </ul>
-        <input type="text" placeholder="search" class="form-control mr-sm-2"
-            (keyup.enter)="search($event.target.value)" />
-    </div>
+    <!-- <div class="navbar-collapse collapse" id="navbarCollapse"> -->
+    <ul class="navbar-nav mr-auto">
+    </ul>
+    <input type="text" placeholder="search" class="form-control col-sm-2
+        col-md-4
+        mr-sm-2"
+        (keyup.enter)="search($event.target.value)" />
+    <!-- </div> -->
 </nav>

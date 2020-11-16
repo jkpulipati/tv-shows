@@ -18,16 +18,21 @@
     cursor: pointer;
 }
 
-.form-control {
-    width: 21% !important;
-}
 .ml-15 {
     margin-left: 1px;
 }
+
 @media only screen and (min-width:768px) {
     .nm-mx-5 {
         margin-left: 1rem!important;
         margin-right: 2rem!important;
     }
+}
+
+.show-rating {
+    position: absolute;
+    bottom: -13px;
+    right: 10px;
+    color: darkorange;
 }
 
