@@ -16,13 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'show/:id',
-    component: ShowDetailsComponent,
-    children: [
-      { path: 'cast', component: ShowsComponent },
-      { path: 'crew', component: ShowsComponent },
-      { path: 'images', component: ShowsComponent },
-      { path: 'seasons', component: ShowsComponent }
-    ]
+    component: ShowDetailsComponent
   },
   {
     path: '**',
