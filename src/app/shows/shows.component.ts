@@ -17,6 +17,7 @@ export class ShowsComponent implements OnInit {
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {
+    this.service.setSearchTerm('');
     this.getPopularShows();
   }
 

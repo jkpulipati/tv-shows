@@ -16,8 +16,10 @@ export class HeaderComponent implements OnInit {
   }
 
   search(value: string): void {
-    this.route.navigate(['/search']);
-    this.sharedService.setSearchTerm(value);
+    if (value) {
+      this.route.navigate(['/search', value]);
+      this.sharedService.setSearchTerm(value);
+    }
   }
 
 }

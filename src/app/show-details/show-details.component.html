@@ -1,4 +1,12 @@
 <div class="row form-group mt-3" *ngIf="showDetails$ | async as showInfo">
+    <nav aria-label="breadcrumb" class="col-md-12 mx-auto">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/']" href="#">Home</a></li>
+            <li class="breadcrumb-item" *ngIf="searchTerm"><a
+                    [routerLink]="['/search', searchTerm]"
+                    href="#">Search</a></li>
+        </ol>
+    </nav>
     <div class="col-md-12 col-xs-12 mx-auto row align-items-center">
         <div class="col-md-9 col-xs-12">
             <h4>{{showInfo?.name}}</h4>
