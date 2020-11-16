@@ -38,7 +38,7 @@ export class ShowsComponent implements OnInit {
     const list = popularShows.sort((show1: ShowModel, show2: ShowModel) => show2.rating.average - show1.rating.average);
 
     return [
-      {name: `Popular Shows`, list, ...list[0] }, ...result
+      {...list[0], name: `Popular Shows`, list }, ...result
     ];
   }
 
