@@ -1,6 +1,6 @@
 <h3 class="col-md-12 col-xs-12 content-padding mb-3">Crew Appearances</h3>
 <div class="col-md-12 col-xs-12 content-padding row">
-    <div *ngFor="let person of crewList" class="col-md-2 col-sm-6 col-xs-6
+    <div *ngFor="let person of crewList" class="col-md-2 col-sm-6 col-6
         mb-3">
         <div class="card">
             <img class="card-img-top" *ngIf="person?.person?.image"
@@ -11,7 +11,8 @@
                 cap">
             <div class="card-body">
                 <p class="card-text text-truncate">{{person.type}} -
-                    {{person.person.name}}</p>
+                    {{person.person.name}}
+                </p>
             </div>
         </div>
     </div>
