@@ -10,8 +10,9 @@
                 src="assets/images/img-not-found.jpg" alt="Card image
                 cap">
             <div class="card-body">
-                <p class="card-text text-truncate">{{person.type}} -
-                    {{person.person.name}}
+                <p class="card-text text-truncate" data-toggle="tooltip"
+                    title="{{person.type}} - {{person.person.name}}">
+                    {{person.type}} - {{person.person.name}}
                 </p>
             </div>
         </div>

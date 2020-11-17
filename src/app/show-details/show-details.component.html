@@ -1,4 +1,5 @@
-<div class="row form-group mt-3" *ngIf="showDetails$ | async as showInfo">
+<div class="row form-group mt-3" *ngIf="showDetails$ | async as showInfo; else
+    loadingOrError">
     <nav aria-label="breadcrumb" class="col-md-12 mx-auto">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/']" href="#">Home</a></li>
@@ -47,3 +48,8 @@
     <app-cast-list *ngIf="showInfo?._embedded?.cast.length"
         [castList]="showInfo?._embedded?.cast"></app-cast-list>
 </div>
+<ng-template #loadingOrError>
+    <div class="spinner-border m-5" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>
