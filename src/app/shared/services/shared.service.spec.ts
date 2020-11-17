@@ -4,7 +4,7 @@ import { API_CONFIG, API_CONFIG_TOKEN } from '../config/api.config';
 
 import { SharedService } from './shared.service';
 
-fdescribe('SharedService', () => {
+describe('SharedService', () => {
   let service: SharedService;
 
   beforeEach(() => {
@@ -35,35 +35,11 @@ fdescribe('SharedService', () => {
     expect(service.getShowList()).toBeDefined();
   });
 
-  it('should call getShowDetails', () => {
-    expect(service.getShowDetails(1217)).toBeDefined();
-  });
-
   it('should call getShowCrewCastSeasonDetails', () => {
     expect(service.getShowCrewCastSeasonDetails(1217)).toBeDefined();
   });
 
-  it('should call getEpisodesByShowId', () => {
-    expect(service.getEpisodesByShowId(1217)).toBeDefined();
-  });
-
-  it('should call getShowCast', () => {
-    expect(service.getShowCast(1217)).toBeDefined();
-  });
-
-  it('should call getShowCrew', () => {
-    expect(service.getShowCrew(1217)).toBeDefined();
-  });
-
-  it('should call getShowSeasons', () => {
-    expect(service.getShowSeasons(1217)).toBeDefined();
-  });
-
-  it('should call getEpisodesBySeasonId', () => {
-    expect(service.getEpisodesBySeasonId(1217)).toBeDefined();
-  });
-
-  it('should call getShowGallery', () => {
-    expect(service.getShowGallery()).toBeDefined();
+  it('should call getSearchByKeyword', () => {
+    expect(service.getSearchByKeyword('girls')).toBeDefined();
   });
 });

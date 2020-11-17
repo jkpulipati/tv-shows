@@ -1,4 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
@@ -33,7 +34,7 @@ describe('ShowsComponent', () => {
     ]
     },
     rating: {
-      average: 6.5
+      average: 9.5
     },
     weight: 97,
     network: {
@@ -68,6 +69,10 @@ describe('ShowsComponent', () => {
       providers: [
         SharedService,
         {provide: API_CONFIG_TOKEN, useValue: API_CONFIG},
+      ],
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA,
+        NO_ERRORS_SCHEMA
       ]
     })
     .compileComponents();

@@ -34,58 +34,13 @@ export class SharedService {
     );
   }
 
-
-  getSearchByPerson(value: string): Observable<any> {
-    const url = `${this.baseUrl}/search/people?q=${value}`;
-    return this.http.get(url).pipe(
-      map((results: any) => {
-        return results.map( (show: any) => ({...show.person}));
-      })
-    );
-  }
-
   getShowList(): Observable<any> {
     const url = `${this.baseUrl}${this.apiConfig.SHOWS}`;
     return this.http.get(url);
   }
 
-  getShowDetails(showId: number): Observable<any> {
-    const url = `${this.baseUrl}${this.apiConfig.SHOWS}/${showId}`;
-    return this.http.get(url);
-  }
-
   getShowCrewCastSeasonDetails(showId: number): Observable<any> {
     const url = `${this.baseUrl}${this.apiConfig.SHOWS}/${showId}${this.apiConfig.CREW_CAST_SEASON_DETAILS}`;
-    return this.http.get(url);
-  }
-
-  getEpisodesByShowId(showId: number): Observable<any> {
-    const url = `${this.baseUrl}/${showId}/episodes`;
-    return this.http.get(url);
-  }
-
-  getShowCast(showId: number): Observable<any> {
-    const url = `${this.baseUrl}/shows/${showId}/cast`;
-    return this.http.get(url);
-  }
-
-  getShowCrew(showId: number): Observable<any> {
-    const url = `${this.baseUrl}/shows/${showId}/crew`;
-    return this.http.get(url);
-  }
-
-  getShowSeasons(showId: number): Observable<any> {
-    const url = `${this.baseUrl}/shows/${showId}/seasons`;
-    return this.http.get(url);
-  }
-
-  getEpisodesBySeasonId(seasonId: number): Observable<any> {
-    const url = `${this.baseUrl}/seasons/${seasonId}/episodes`;
-    return this.http.get(url);
-  }
-
-  getShowGallery(): Observable<any> {
-    const url = `${this.baseUrl}/${this.apiConfig.SHOW_IMAGES}`;
     return this.http.get(url);
   }
 }
