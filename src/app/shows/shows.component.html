@@ -1,6 +1,6 @@
 <div *ngIf="popularShows$ | async as popularShows; else loadingOrError"
     class="nm-mx-5">
-    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-4">
+    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-5">
         <h4>{{genreShow.name}}</h4>
         <carousel [arrowsTheme]="dark">
             <div class="carousel-cell" *ngFor="let show of genreShow.list">
