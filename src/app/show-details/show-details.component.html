@@ -28,25 +28,31 @@
     </div>
     <div class="col-md-12 col-xs-12 content-padding mx-auto row">
         <h3 class="col-md-12 col-xs-12">Seasons</h3>
-        <ul class="nav nav-tabs">
-            <li class="nav-item" *ngFor="let season of
-                showInfo?._embedded?.seasons; let
-                i=index">
-                <div class="col-md-3 col-xs-12 text-center">
-                    <img *ngIf="season?.image" class="card-img-top title-img"
-                        [src]="season?.image?.original" alt="Card image
-                        cap">
-                    <ng-container *ngIf="!season?.image">
-                        <img class="card-img-top title-img"
-                            src="assets/images/img-not-found.jpg" alt="Card
-                            image
-                            cap">
-                        <p class="season-number">Season{{i+1}}</p>
-                        <!-- <span class="card-img-top title-img">Season {{i+1}}</span> -->
-                    </ng-container>
-                </div>
-            </li>
-        </ul>
+        <!-- <div class="col-md-2 col-sm-6 col-6 mb-4" *ngFor="let season of
+            showInfo?._embedded?.seasons; let
+            i=index">
+            <img *ngIf="season?.image" class="card-img-top title-img"
+                [src]="season?.image?.original" alt="Card image
+                cap">
+            <ng-container *ngIf="!season?.image">
+                <img class="card-img-top title-img"
+                    src="assets/images/img-not-found.jpg" alt="Card
+                    image
+                    cap">
+                <p class="season-number">Season{{i+1}}</p>
+            </ng-container>
+        </div> -->
+        <div class="col-md-6 col-lg-2 col-sm-6 col-xs-6" *ngFor="let season of
+            showInfo?._embedded?.seasons; let i=index">
+            <div class="card mb-4 shadow-sm">
+                <img *ngIf="season?.image" class="img-card"
+                    [src]="season?.image?.original" alt="Image not available">
+                <img class="img-card" *ngIf="!season?.image"
+                    src="assets/images/img-not-found.jpg" alt="Image not
+                    available">
+                <p *ngIf="!season?.image" class="season-number">Season{{i+1}}</p>
+            </div>
+        </div>
     </div>
     <app-crew-list *ngIf="showInfo?._embedded?.crew.length"
         [crewList]="showInfo?._embedded?.crew"></app-crew-list>
