@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a [routerLink]="['/']" href="#">Home</a></li>
       </ol>
     </nav>
-    <div class="col-md-6 col-lg-3 col-sm-12 col-xs-12" *ngFor="let show of
+    <div class="col-md-6 col-lg-2 col-sm-12 col-xs-12" *ngFor="let show of
       shows">
       <div class="card mb-4 shadow-sm">
         <img *ngIf="show?.image" class="img-card"
@@ -20,6 +20,7 @@
         <p class="show-rating">{{(show?.rating?.average) ?
           show?.rating?.average :
           'NA'}}</p>
+        <p *ngIf="!show?.image" class="show-name">{{show?.name}}</p>
       </div>
     </div>
 

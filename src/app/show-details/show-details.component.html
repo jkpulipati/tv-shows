@@ -1,29 +1,33 @@
 <div class="row form-group mt-3" *ngIf="showDetails$ | async as showInfo; else
     loadingOrError">
-    <nav aria-label="breadcrumb" class="col-md-12 mx-auto">
+    <nav aria-label="breadcrumb" class="col-md-12 content-padding mx-auto">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a [routerLink]="['/']" href="#">Home</a></li>
             <li class="breadcrumb-item" *ngIf="searchTerm"><a
-                    [routerLink]="['/search', searchTerm]"
-                    href="#">Search</a></li>
+                    [routerLink]="['/search', searchTerm]" href="#">Search</a></li>
         </ol>
     </nav>
-    <div class="col-md-12 col-xs-12 mx-auto row align-items-center">
-        <div class="col-md-9 col-xs-12">
+    <div class="col-md-12 col-xs-12 content-padding mx-auto row
+        align-items-center mb-4">
+        <div class="col-md-9 col-xs-12 text-justify">
             <h4>{{showInfo?.name}}</h4>
             <p [innerHTML]="showInfo.summary"></p>
             <p *ngIf="showInfo?.rating?.average">Rating:
-                {{showInfo?.rating?.average}}</p>
+                {{showInfo?.rating?.average}}
+            </p>
             <p *ngIf="showInfo?.runtime">Duration: {{showInfo?.runtime}} mins</p>
         </div>
         <div class="col-md-3 col-xs-12 text-center">
-            <img class="card-img-top title-img"
+            <img *ngIf="showInfo?.image" class="card-img-top title-img"
                 [src]="showInfo?.image?.original" alt="Card image
+                cap">
+            <img *ngIf="!showInfo?.image" class="card-img-top title-img"
+                src="assets/images/img-not-found.jpg" alt="Card image
                 cap">
         </div>
     </div>
-    <h3 class="col-md-12 col-xs-12 content-padding mb-3">Seasons</h3>
-    <div class="col-md-12 col-xs-12 mx-auto row">
+    <div class="col-md-12 col-xs-12 content-padding mx-auto row">
+        <h3 class="col-md-12 col-xs-12">Seasons</h3>
         <ul class="nav nav-tabs">
             <li class="nav-item" *ngFor="let season of
                 showInfo?._embedded?.seasons; let
@@ -37,6 +41,7 @@
                             src="assets/images/img-not-found.jpg" alt="Card
                             image
                             cap">
+                        <p class="season-number">Season{{i+1}}</p>
                         <!-- <span class="card-img-top title-img">Season {{i+1}}</span> -->
                     </ng-container>
                 </div>
