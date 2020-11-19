@@ -22,6 +22,7 @@ Below are the packages used as part of the development
 - HTTP client
 - Routes management: AngularRouter
 - Components design: bootstrap
+- Third party library: angular-responsive-carousel
 - Unit testing: Karma and Jasmine
 - Code formatters: TS-Linter
 
@@ -48,6 +49,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 npm run lint
 
-## Running unit tests
+## Running unit tests and see coverage folder
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karma-runner.github.io).

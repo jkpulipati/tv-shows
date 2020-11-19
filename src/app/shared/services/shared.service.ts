@@ -26,7 +26,7 @@ export class SharedService {
   }
 
   getSearchByKeyword(value: string): Observable<any> {
-    const url = `${this.baseUrl}/search/shows?q=${value}`;
+    const url = `${this.baseUrl}${this.apiConfig.SEARCH_SHOWS}${value}`;
     return this.http.get(url).pipe(
       map((results: any) => {
         return results.map( (show: any) => ({...show.show}));

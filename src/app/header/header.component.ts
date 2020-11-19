@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { SharedService } from '../shared/services/shared.service';
 
 @Component({
@@ -19,6 +18,15 @@ export class HeaderComponent implements OnInit {
     if (value) {
       this.route.navigate(['/search', value]);
       this.sharedService.setSearchTerm(value);
+    }
+  }
+
+  keyPress(event: any): void {
+    const pattern = /[A-Za-z0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    if (!pattern.test(inputChar)) {
+        // invalid character, prevent input
+        event.preventDefault();
     }
   }
 

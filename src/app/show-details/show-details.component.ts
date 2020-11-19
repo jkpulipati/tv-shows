@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ShowModel } from '../shared/config/models';
 import { SharedService } from '../shared/services/shared.service';
 
@@ -14,7 +15,7 @@ export class ShowDetailsComponent implements OnInit {
   showDetails$: Observable<Array<ShowModel>>;
   searchTerm: string;
 
-  constructor(private service: SharedService, private router: ActivatedRoute) { }
+  constructor(private service: SharedService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -24,7 +25,13 @@ export class ShowDetailsComponent implements OnInit {
 
     if (this.router.snapshot.paramMap.get('id')) {
       const showId = +(this.router.snapshot.paramMap.get('id'));
-      this.showDetails$ = this.service.getShowCrewCastSeasonDetails(showId);
+      if (showId) {
+        this.showDetails$ = this.service.getShowCrewCastSeasonDetails(showId).pipe(
+          catchError(err => this.route.navigate(['']))
+        );
+      } else {
+        this.route.navigate(['']);
+      }
     }
   }
 }

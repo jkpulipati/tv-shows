@@ -28,20 +28,6 @@
     </div>
     <div class="col-md-12 col-xs-12 content-padding mx-auto row">
         <h3 class="col-md-12 col-xs-12">Seasons</h3>
-        <!-- <div class="col-md-2 col-sm-6 col-6 mb-4" *ngFor="let season of
-            showInfo?._embedded?.seasons; let
-            i=index">
-            <img *ngIf="season?.image" class="card-img-top title-img"
-                [src]="season?.image?.original" alt="Card image
-                cap">
-            <ng-container *ngIf="!season?.image">
-                <img class="card-img-top title-img"
-                    src="assets/images/img-not-found.jpg" alt="Card
-                    image
-                    cap">
-                <p class="season-number">Season{{i+1}}</p>
-            </ng-container>
-        </div> -->
         <div class="col-md-6 col-lg-2 col-sm-6 col-xs-6" *ngFor="let season of
             showInfo?._embedded?.seasons; let i=index">
             <div class="card mb-4 shadow-sm">
@@ -60,7 +46,7 @@
         [castList]="showInfo?._embedded?.cast"></app-cast-list>
 </div>
 <ng-template #loadingOrError>
-    <div class="spinner-border m-5" role="status">
+    <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
     </div>
 </ng-template>

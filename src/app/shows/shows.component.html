@@ -1,22 +1,22 @@
 <div *ngIf="popularShows$ | async as popularShows; else loadingOrError"
-    class="nm-mx-5">
-    <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-5">
-        <h4>{{genreShow.name}}</h4>
-        <carousel [arrowsTheme]="dark" [cellsToScroll]="2">
-            <div class="carousel-cell" *ngFor="let show of genreShow.list">
-                <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
-                    [src]="show?.image?.original">
-                <img *ngIf="!show?.image" [routerLink]="['/show', show.id]"
-                    src="assets/images/img-not-found.jpg">
-                <p class="show-rating">{{(show?.rating?.average) ?
-                    show?.rating?.average :
-                    'NA'}}</p>
-            </div>
-        </carousel>
-    </div>
+  class="nm-mx-5">
+  <div *ngFor="let genreShow of groupByGenreShows" class="row mx-0 my-5">
+    <h4>{{genreShow.name}}</h4>
+    <carousel [arrowsTheme]="dark" [cellsToScroll]="2">
+      <div class="carousel-cell" *ngFor="let show of genreShow.list">
+        <img *ngIf="show?.image" [routerLink]="['/show', show.id]"
+          [src]="show?.image?.original">
+        <img *ngIf="!show?.image" [routerLink]="['/show', show.id]"
+          src="assets/images/img-not-found.jpg">
+        <p class="show-rating">Rating: {{(show?.rating?.average) ?
+          show?.rating?.average :
+          'NA'}}</p>
+      </div>
+    </carousel>
+  </div>
 </div>
 <ng-template #loadingOrError>
-    <div class="spinner-border m-5" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </ng-template>
