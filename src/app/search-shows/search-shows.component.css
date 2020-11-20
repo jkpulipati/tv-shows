@@ -30,8 +30,12 @@
 
 .show-name {
     position: absolute;
-    top: 50%;
-    left: 35%;
+    top: 2%;
+    left: 21%;
     color: cornsilk;
     font-size: larger;
+}
+
+.pl-17 {
+    padding-left: 17px;
 }
