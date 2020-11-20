@@ -7,7 +7,7 @@ import { SharedService } from '../shared/services/shared.service';
 
 import { SearchShowsComponent } from './search-shows.component';
 
-describe('SearchShowsComponent', () => {
+fdescribe('SearchShowsComponent', () => {
   let component: SearchShowsComponent;
   let fixture: ComponentFixture<SearchShowsComponent>;
   let sharedService: SharedService;
@@ -73,13 +73,16 @@ describe('SearchShowsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchShowsComponent);
     sharedService = TestBed.inject(SharedService);
-    spyOn(sharedService, 'getSearchTerm').and.returnValue(of('girls'));
-    spyOn(sharedService, 'getSearchByKeyword').and.returnValue(of(shows));
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    spyOn(sharedService, 'getSearchTerm').and.returnValue(of('girls'));
+    spyOn(sharedService, 'getSearchByKeyword').and.returnValue(of(shows));
     expect(component).toBeTruthy();
+    component.searchShows$.subscribe(res => {
+      expect(res).toEqual(shows);
+    });
   });
 });

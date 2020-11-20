@@ -11,6 +11,7 @@ import { HeaderComponent } from './header.component';
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
+  let service: SharedService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -27,6 +28,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
+    service = TestBed.inject(SharedService);
     fixture.detectChanges();
   });
 
@@ -34,9 +36,19 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('Func: search function test', () => {
-    it('search function test with jk as input ', () => {
+  describe('Func: search method', () => {
+    it('should return jk ', () => {
       component.search('jk');
+      service.getSearchTerm().subscribe(res => {
+        expect(res).toEqual('jk');
+      });
     });
   });
+
+  describe('Func: keyPress method', () => {
+    it('keyPress function test with jk as input ', () => {
+      component.keyPress(new Event('test'));
+    });
+  });
+
 });

@@ -17,7 +17,7 @@
           [routerLink]="['/show', show.id]"
           src="assets/images/img-not-found.jpg" alt="Image not
           available">
-        <p class="show-rating">{{(show?.rating?.average) ?
+        <p class="show-rating">Rating: {{(show?.rating?.average) ?
           show?.rating?.average :
           'NA'}}</p>
         <p *ngIf="!show?.image" class="show-name">{{show?.name}}</p>

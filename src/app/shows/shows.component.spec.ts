@@ -89,4 +89,66 @@ describe('ShowsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('Func: getUniqueGenres method ', () => {
+    it('should return unique genres', () => {
+      const result = component.getUniqueGenres(shows);
+      expect(result.length).toEqual(3);
+      expect(result).toContain('Drama');
+    });
+
+    it('should return unique genres of length is 0 with input as empty array', () => {
+      const result = component.getUniqueGenres([]);
+      expect(result.length).toEqual(0);
+    });
+  });
+
+  describe('Func: groupByUniqueGenres method ', () => {
+    it('should return the filtered shows by unique genres', () => {
+      const uniqueGenres = [
+        'Drama',
+        'Science-Fiction',
+        'Thriller'
+      ];
+      const result = component.groupByUniqueGenres(uniqueGenres, shows);
+      expect(result.length).toEqual(3);
+      expect(result[0].list.length).toEqual(2);
+    });
+
+    it('should return the empty list of shows when we call with empty genres', () => {
+      const uniqueGenres = [];
+      const result = component.groupByUniqueGenres(uniqueGenres, shows);
+      expect(result.length).toEqual(0);
+    });
+  });
+
+  describe('Func: formatShows method ', () => {
+    it('should return the shows filtered by unique genres ', () => {
+      const popularShows = [
+        {...show, id: 1217}
+      ];
+      const result = component.formatShows(shows, popularShows);
+      expect(result.length).toEqual(4);
+      expect(result[0].name).toEqual('Popular Shows');
+      // log
+    });
+  });
+
+  describe('Func: getPopularShows method ', () => {
+    it('should return the list of shows whose rating is greater than or equal to 9 ', () => {
+      component.getPopularShows();
+      component.popularShows$.subscribe(res => {
+        expect(res.length).toEqual(2);
+      });
+    });
+
+    // scenario
+    it('should return the list of shows whose rating is greater than or equal to 9 ', () => {
+      // add
+      component.getPopularShows();
+      component.popularShows$.subscribe(res => {
+        expect(res.length).toEqual(2);
+      });
+    });
+  });
 });

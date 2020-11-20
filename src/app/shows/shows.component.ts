@@ -13,6 +13,7 @@ export class ShowsComponent implements OnInit {
 
   popularShows$: Observable<Array<ShowModel>>;
   groupByGenreShows: Array<ShowModel> = [];
+  popularRating = 8.5;
 
   constructor(private service: SharedService) { }
 
@@ -21,16 +22,18 @@ export class ShowsComponent implements OnInit {
     this.getPopularShows();
   }
 
+  // get popular shows whose rating is greater than equal to 9
   getPopularShows(): void {
     this.popularShows$ = this.service.getShowList().pipe(
       map( (shows: Array<ShowModel>) => {
-        const popularShows = shows.filter(show => show.rating.average > 8.5);
+        const popularShows = shows.filter(show => show.rating.average > this.popularRating);
         this.groupByGenreShows = this.formatShows(shows, popularShows);
         return popularShows;
       })
     );
   }
 
+  // should return the popular and unique genre shows
   formatShows(shows: Array<ShowModel>, popularShows: Array<ShowModel>): Array<ShowModel> {
     const uniqueGenres: Array<string> = this.getUniqueGenres(shows);
     const result: Array<ShowModel> = this.groupByUniqueGenres(uniqueGenres, shows);
@@ -42,6 +45,7 @@ export class ShowsComponent implements OnInit {
     ];
   }
 
+  // get unique genres from all shows
   getUniqueGenres(shows: Array<ShowModel>): Array<string> {
     return shows.reduce((acc: Array<any>, res: ShowModel) => {
         acc = [...acc, ...res.genres];
@@ -49,6 +53,7 @@ export class ShowsComponent implements OnInit {
     }, []);
   }
 
+  // should return genre shows
   groupByUniqueGenres(genres: Array<string>, shows: Array<ShowModel>): Array<ShowModel> {
     return genres.reduce( (res: Array<any>, genre: string) => {
         const list: Array<ShowModel> = shows.filter( (show: ShowModel) => show.genres.indexOf(genre) !== -1)
