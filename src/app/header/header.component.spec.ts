@@ -56,10 +56,6 @@ describe('HeaderComponent', () => {
     it('keyPress function test with jk as input ', () => {
       component.keyPress(new Event('test'));
     });
-
-    it('keyPress function test with jk as input ', () => {
-      component.keyPress(new Event(''));
-    });
   });
 
 });

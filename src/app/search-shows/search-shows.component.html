@@ -10,13 +10,10 @@
     <div class="col-md-6 col-lg-2 col-sm-12 col-xs-12" *ngFor="let show of
       shows">
       <div class="card mb-4 shadow-sm">
-        <img *ngIf="show?.image" class="img-card"
+        <img class="img-card"
           [routerLink]="['/show', show.id]"
-          [src]="show?.image?.original" alt="Image not available">
-        <img class="img-card" *ngIf="!show?.image"
-          [routerLink]="['/show', show.id]"
-          src="assets/images/img-not-found.jpg" alt="Image not
-          available">
+          [src]="show?.image ? show?.image?.original :
+          'assets/images/img-not-found.jpg'" alt="Image not available">
         <p class="show-rating">Rating: {{(show?.rating?.average) ?
           show?.rating?.average :
           'NA'}}</p>

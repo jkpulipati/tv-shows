@@ -18,11 +18,9 @@
             <p *ngIf="showInfo?.runtime">Duration: {{showInfo?.runtime}} mins</p>
         </div>
         <div class="col-md-3 col-xs-12 text-center">
-            <img *ngIf="showInfo?.image" class="card-img-top title-img"
-                [src]="showInfo?.image?.original" alt="Card image
-                cap">
-            <img *ngIf="!showInfo?.image" class="card-img-top title-img"
-                src="assets/images/img-not-found.jpg" alt="Card image
+            <img class="card-img-top title-img"
+                [src]="showInfo?.image ? showInfo?.image?.original :
+                'assets/images/img-not-found.jpg'" alt="Card image
                 cap">
         </div>
     </div>
@@ -31,10 +29,9 @@
         <div class="col-md-6 col-lg-2 col-sm-6 col-xs-6" *ngFor="let season of
             showInfo?._embedded?.seasons; let i=index">
             <div class="card mb-4 shadow-sm">
-                <img *ngIf="season?.image" class="img-card"
-                    [src]="season?.image?.original" alt="Image not available">
-                <img class="img-card" *ngIf="!season?.image"
-                    src="assets/images/img-not-found.jpg" alt="Image not
+                <img class="img-card" [src]="season?.image ?
+                    season?.image?.original: 'assets/images/img-not-found.jpg'"
+                    alt="Image not
                     available">
                 <p *ngIf="!season?.image" class="season-number">Season{{i+1}}</p>
             </div>
