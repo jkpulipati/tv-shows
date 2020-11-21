@@ -12,7 +12,6 @@ import { ShowsComponent } from './shows/shows.component';
 import { API_CONFIG, API_CONFIG_TOKEN } from './shared/config/api.config';
 import { ShowDetailsComponent } from './show-details/show-details.component';
 import { SearchShowsComponent } from './search-shows/search-shows.component';
-import { CastListComponent } from './cast-list/cast-list.component';
 import { CrewListComponent } from './crew-list/crew-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
@@ -23,7 +22,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShowsComponent,
     ShowDetailsComponent,
     SearchShowsComponent,
-    CastListComponent,
     CrewListComponent,
     PageNotFoundComponent
   ],

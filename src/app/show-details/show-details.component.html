@@ -37,10 +37,12 @@
             </div>
         </div>
     </div>
-    <app-crew-list *ngIf="showInfo?._embedded?.crew.length"
+    <app-crew-list [name]="'Crew Appearances'"
+        *ngIf="showInfo?._embedded?.crew.length"
         [crewList]="showInfo?._embedded?.crew"></app-crew-list>
-    <app-cast-list *ngIf="showInfo?._embedded?.cast.length"
-        [castList]="showInfo?._embedded?.cast"></app-cast-list>
+    <app-crew-list [name]="'Cast Appearances'"
+        *ngIf="showInfo?._embedded?.cast.length"
+        [crewList]="showInfo?._embedded?.cast"></app-crew-list>
 </div>
 <ng-template #loadingOrError>
     <div class="spinner-border" role="status">

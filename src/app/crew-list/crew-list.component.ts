@@ -9,6 +9,7 @@ import { ShowModel } from '../shared/config/models';
 export class CrewListComponent implements OnInit {
 
   @Input() crewList: Array<ShowModel>;
+  @Input() name: string;
 
   constructor() { }
 
