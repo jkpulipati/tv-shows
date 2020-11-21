@@ -43,11 +43,22 @@ describe('HeaderComponent', () => {
         expect(res).toEqual('jk');
       });
     });
+
+    it('should return empty string ', () => {
+      component.search('');
+      service.getSearchTerm().subscribe(res => {
+        expect(res).toEqual('');
+      });
+    });
   });
 
   describe('Func: keyPress method', () => {
     it('keyPress function test with jk as input ', () => {
       component.keyPress(new Event('test'));
+    });
+
+    it('keyPress function test with jk as input ', () => {
+      component.keyPress(new Event(''));
     });
   });
 

@@ -56,7 +56,7 @@ describe('ShowsComponent', () => {
     updated: 1573667713
   };
   const shows = [
-    {...show}, {...show, id: 1217}
+    {...show}, {...show, id: 1217, rating: {average: 5.4}}
   ];
 
   beforeEach(async(() => {
@@ -81,13 +81,86 @@ describe('ShowsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ShowsComponent);
     service = TestBed.inject(SharedService);
-    spyOn(service, 'getShowList').and.returnValue(of(shows));
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('Func: getPopularShows method ', () => {
+    it('should return the list of shows whose rating is greater than or equal to 8.5 ', () => {
+      const popularShows = [
+        {
+          ...show,
+          id: 1,
+          name: 'Under the Dome',
+          rating: {
+            average: 9.5
+          },
+        },
+        {
+          ...show,
+          id: 2,
+          name: 'Breaking Bad',
+          rating: {
+            average: 9.8
+          }
+        },
+        {
+          ...show,
+          id: 2,
+          name: 'jk carousel',
+          rating: {
+            average: 5.8
+          }
+        }
+      ];
+      spyOn(service, 'getShowList').and.returnValue(of(popularShows));
+      component.getPopularShows();
+      component.popularShows$.subscribe(res => {
+        expect(res.length).toEqual(2);
+      });
+    });
+
+    it('should return the list of popular shows ', () => {
+      const popularShows = [
+        {
+          ...show,
+          id: 2,
+          name: 'jk carousel',
+          rating: {
+            average: 5.8
+          }
+        }
+      ];
+      spyOn(service, 'getShowList').and.returnValue(of(popularShows));
+      component.getPopularShows();
+      component.popularShows$.subscribe(res => {
+        expect(res.length).toEqual(0);
+      });
+    });
+  });
+
+  describe('Func: formatShows method ', () => {
+    it('should return the shows filtered by unique genres ', () => {
+      const popularShows = [
+        {...show, id: 1217}
+      ];
+      const result = component.formatShows(shows, popularShows);
+      expect(result.length).toEqual(4);
+      expect(result[0].name).toEqual('Popular Shows');
+    });
+
+    it('should return shows sorted by rating', () => {
+      const popularShows = [
+        {...show, id: 1217}
+      ];
+      const result = component.formatShows(shows, popularShows);
+      expect(result.length).toEqual(4);
+      expect(result[result.length - 1].list[result[result.length - 1].list.length - 1].rating.average).toEqual(5.4);
+    });
   });
 
   describe('Func: getUniqueGenres method ', () => {
@@ -98,7 +171,7 @@ describe('ShowsComponent', () => {
     });
 
     it('should return unique genres of length is 0 with input as empty array', () => {
-      const result = component.getUniqueGenres([]);
+      const result = component.getUniqueGenres([{...show, genres: []}]);
       expect(result.length).toEqual(0);
     });
   });
@@ -122,33 +195,4 @@ describe('ShowsComponent', () => {
     });
   });
 
-  describe('Func: formatShows method ', () => {
-    it('should return the shows filtered by unique genres ', () => {
-      const popularShows = [
-        {...show, id: 1217}
-      ];
-      const result = component.formatShows(shows, popularShows);
-      expect(result.length).toEqual(4);
-      expect(result[0].name).toEqual('Popular Shows');
-      // log
-    });
-  });
-
-  describe('Func: getPopularShows method ', () => {
-    it('should return the list of shows whose rating is greater than or equal to 9 ', () => {
-      component.getPopularShows();
-      component.popularShows$.subscribe(res => {
-        expect(res.length).toEqual(2);
-      });
-    });
-
-    // scenario
-    it('should return the list of shows whose rating is greater than or equal to 9 ', () => {
-      // add
-      component.getPopularShows();
-      component.popularShows$.subscribe(res => {
-        expect(res.length).toEqual(2);
-      });
-    });
-  });
 });

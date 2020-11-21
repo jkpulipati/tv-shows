@@ -18,11 +18,17 @@ export class ShowDetailsComponent implements OnInit {
   constructor(private service: SharedService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.getSearchKeyword();
+    this.getShowDetails();
+  }
 
+  getSearchKeyword(): void {
     this.service.getSearchTerm().subscribe(value => {
       this.searchTerm = value ? value : '';
     });
+  }
 
+  getShowDetails(): void {
     if (this.router.snapshot.paramMap.get('id')) {
       const showId = +(this.router.snapshot.paramMap.get('id'));
       if (showId) {

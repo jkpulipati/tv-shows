@@ -7,7 +7,7 @@ import { SharedService } from '../shared/services/shared.service';
 
 import { SearchShowsComponent } from './search-shows.component';
 
-fdescribe('SearchShowsComponent', () => {
+describe('SearchShowsComponent', () => {
   let component: SearchShowsComponent;
   let fixture: ComponentFixture<SearchShowsComponent>;
   let sharedService: SharedService;
@@ -78,11 +78,26 @@ fdescribe('SearchShowsComponent', () => {
   });
 
   it('should create', () => {
-    spyOn(sharedService, 'getSearchTerm').and.returnValue(of('girls'));
-    spyOn(sharedService, 'getSearchByKeyword').and.returnValue(of(shows));
     expect(component).toBeTruthy();
-    component.searchShows$.subscribe(res => {
-      expect(res).toEqual(shows);
+  });
+
+
+  describe('Func: getSearchShows method', () => {
+    it('should return the list of shows through search', () => {
+      spyOn(sharedService, 'getSearchTerm').and.returnValue(of('girls'));
+      spyOn(sharedService, 'getSearchByKeyword').and.returnValue(of(shows));
+      component.getSearchShows();
+      component.searchShows$.subscribe(res => {
+        expect(res).toEqual(shows);
+      });
+    });
+
+    it('should navigate to main page', () => {
+      spyOn(sharedService, 'getSearchTerm').and.returnValue(of(''));
+      spyOn(sharedService, 'getSearchByKeyword').and.returnValue(of(shows));
+      component.getSearchShows();
+      expect(component.searchShows$).toBeUndefined();
     });
   });
+
 });

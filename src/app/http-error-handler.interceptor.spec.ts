@@ -1,11 +1,11 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorResponse, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { HttpErrorHandlerInterceptor } from './http-error-handler.interceptor';
 import { API_CONFIG, API_CONFIG_TOKEN } from './shared/config/api.config';
 import { SharedService } from './shared/services/shared.service';
-import { throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 describe('HttpErrorHandlerInterceptor', () => {
   let service: SharedService;
@@ -50,7 +50,6 @@ describe('HttpErrorHandlerInterceptor', () => {
         .subscribe(
             result => console.log('good', result),
             err => {
-                console.log('error', err);
                 if (err && err.error) {
                   expect(err.error.message).toEqual('test-error');
                 }

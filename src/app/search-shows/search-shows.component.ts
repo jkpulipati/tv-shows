@@ -17,6 +17,10 @@ export class SearchShowsComponent implements OnInit {
   constructor(private sharedService: SharedService, private route: Router) { }
 
   ngOnInit(): void {
+    this.getSearchShows();
+  }
+
+  getSearchShows(): void {
     this.sharedService.getSearchTerm().subscribe(value => {
       if (value) {
         this.searchShows$ = this.sharedService.getSearchByKeyword(value).pipe(
