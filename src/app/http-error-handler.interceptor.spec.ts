@@ -6,6 +6,8 @@ import { HttpErrorHandlerInterceptor } from './http-error-handler.interceptor';
 import { API_CONFIG, API_CONFIG_TOKEN } from './shared/config/api.config';
 import { SharedService } from './shared/services/shared.service';
 import { of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('HttpErrorHandlerInterceptor', () => {
   let service: SharedService;
@@ -16,7 +18,7 @@ describe('HttpErrorHandlerInterceptor', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [
         SharedService,
         HttpErrorHandlerInterceptor,
