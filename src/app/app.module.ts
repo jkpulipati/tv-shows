@@ -14,6 +14,7 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { SearchShowsComponent } from './search-shows/search-shows.component';
 import { CrewListComponent } from './crew-list/crew-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShowDetailsComponent,
     SearchShowsComponent,
     CrewListComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ServerErrorComponent
   ],
   imports: [
     BrowserModule,

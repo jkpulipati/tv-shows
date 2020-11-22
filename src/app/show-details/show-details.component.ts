@@ -32,9 +32,7 @@ export class ShowDetailsComponent implements OnInit {
     if (this.router.snapshot.paramMap.get('id')) {
       const showId = +(this.router.snapshot.paramMap.get('id'));
       if (showId) {
-        this.showDetails$ = this.service.getShowCrewCastSeasonDetails(showId).pipe(
-          catchError(err => this.route.navigate(['']))
-        );
+        this.showDetails$ = this.service.getShowCrewCastSeasonDetails(showId);
       } else {
         this.route.navigate(['']);
       }
