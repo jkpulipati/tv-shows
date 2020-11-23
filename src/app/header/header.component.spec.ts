@@ -1,8 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { of } from 'rxjs';
 import { API_CONFIG, API_CONFIG_TOKEN } from '../shared/config/api.config';
 import { SharedService } from '../shared/services/shared.service';
 
